@@ -1,5 +1,6 @@
 package com.example.typinganalyze.typing.usecase
 
+import android.util.Log
 import com.example.typinganalyze.typing.data.KeyEventAnalyticsDao
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.Flow
@@ -20,6 +21,8 @@ class WPMCalculatorIml(
 
     private var typingStarted: Long? = null
 
+    // TODO: fetch only last event like:
+    // keyEventAnalyticsDao.getUpdates() : FLow<KeyEventAnalytics> instead if FLow<List<KeyEventAnalytics>>
     override suspend fun invoke(): Flow<Int> {
         keyEventAnalyticsDao.clearAllKeyEvents()
 
@@ -55,11 +58,14 @@ class WPMCalculatorIml(
                 val totalTime = currentTime - (typingStarted ?: 0) - pauses
 
                 val timeInMinutes = totalTime / (1000.0 * 60.0) // converting ms to minutes
+
                 val wpm = if (timeInMinutes > 0) {
                     (events.size / 5.0) / timeInMinutes
                 } else {
                     0.0
                 }
+
+                Log.d("LOL", "$timeInMinutes, ${events.size},  $wpm")
 
                 wpm.toInt()
             }.flowOn(dispatcher)

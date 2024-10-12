@@ -14,12 +14,15 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TopAppBar
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.key.Key
 import androidx.compose.ui.input.key.KeyEvent
 import androidx.compose.ui.input.key.key
 import androidx.compose.ui.input.key.onPreInterceptKeyBeforeSoftKeyboard
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -33,8 +36,16 @@ fun TypingScreen(
 ) {
 
     val viewState = viewModel.viewState.collectAsStateWithLifecycle()
-
     val viewStateValue = viewState.value
+
+    val configuration = LocalConfiguration.current
+
+    LaunchedEffect(configuration) {
+        snapshotFlow { configuration.orientation }
+            .collect { orientation ->
+                viewModel.handleEvents(TypingViewModel.Event.OrientationChanged(orientation))
+            }
+    }
 
     TypingScreenContent(
         viewState = viewStateValue,
@@ -112,7 +123,7 @@ fun TypingScreenPreview() {
     MaterialTheme {
         TypingScreenContent(
             viewState = TypingViewModel.ViewState(
-                "dasdf", "fasdfgsfgsdfg", 10, "ajsdifnksf",
+                "dasdf", "fasdfgsfgsdfg", 10, "ajsdifnksf", 0
             ), {}, {}
         )
     }

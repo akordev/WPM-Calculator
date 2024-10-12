@@ -31,7 +31,8 @@ class TypingViewModel(
             paragraph = getTextToTypeUseCase(),
             wpm = 0,
             typedText = "",
-            username = username
+            username = username,
+            orientation = 0
         )
     )
     val viewState: StateFlow<ViewState>
@@ -51,6 +52,7 @@ class TypingViewModel(
     fun handleEvents(event: Event) = when (event) {
         is Event.KeyClicked -> onKeyEvent(event.keyEvent)
         is Event.TextChanged -> updateTypedText(event.newText)
+        is Event.OrientationChanged -> updateOrientation(event.orientation)
     }
 
 
@@ -88,16 +90,24 @@ class TypingViewModel(
         )
     }
 
+    private fun updateOrientation(orientation: Int) {
+        _viewState.value = _viewState.value.copy(
+            orientation = orientation
+        )
+    }
+
     data class ViewState(
         val username: String,
         val paragraph: String,
         val wpm: Int,
-        val typedText: String
+        val typedText: String,
+        val orientation: Int
     )
 
     sealed interface Event {
         data class TextChanged(val newText: String) : Event
         data class KeyClicked(val keyEvent: KeyEvent) : Event
+        data class OrientationChanged(val orientation: Int) : Event
     }
 
     companion object {
