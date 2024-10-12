@@ -1,0 +1,53 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.2.1 Safari/605.1.15" version="24.7.17">
+  <diagram name="Page-1" id="7O82_YLJNRSDlm81k0y_">
+    <mxGraphModel dx="2035" dy="695" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ygEZkj2UfLqJHeMsKoiQ-22" target="ygEZkj2UfLqJHeMsKoiQ-24">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="110" y="160" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-28" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ygEZkj2UfLqJHeMsKoiQ-22" target="ygEZkj2UfLqJHeMsKoiQ-27">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="ygEZkj2UfLqJHeMsKoiQ-22" target="ygEZkj2UfLqJHeMsKoiQ-30">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="940" y="200" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-22" value="WPM interface" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="330" y="10" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-24" value="Default implementation (5 symbols == word)" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="220" width="210" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-25" value="Keep an eye on the spaces to accurately calculate the number of words you write" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="217.5" width="229" height="142.5" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.391;entryY=0.029;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="ygEZkj2UfLqJHeMsKoiQ-22" target="ygEZkj2UfLqJHeMsKoiQ-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-27" value="Utilise AI to process user behaviour analytics, calculate wpm, find grammar mistakes and etc" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="590" y="215" width="220" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-30" value="Fake impl for tests" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="860" y="215" width="210" height="145" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-31" value="WPM Factory" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="340" y="600" width="300" height="210" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-32" value="Input: WPMStrategy" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="675" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-33" value="&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 12px;&quot;&gt;sealed interface WPMStrategy{ &amp;nbsp; &amp;nbsp;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;data object AI: WPMStrategy &amp;nbsp; &amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&amp;nbsp;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;data object AccurateWordCalculation: WPMStrategy &amp;nbsp; &amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;white-space: pre;&quot;&gt;&#x9;&lt;/span&gt;&amp;nbsp;data object FiveSimbolsPerWord: WPMStrategy&amp;nbsp;&lt;/div&gt;&lt;div style=&quot;text-align: left;&quot;&gt;&lt;span style=&quot;font-size: 12px; text-align: center;&quot;&gt;}&lt;/span&gt;&lt;/div&gt;" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="-10" y="563" width="340" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="ygEZkj2UfLqJHeMsKoiQ-36" value="output :&amp;nbsp;&lt;span style=&quot;font-size: 12.000001px;&quot;&gt;WPM interface&lt;/span&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="580" y="675" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

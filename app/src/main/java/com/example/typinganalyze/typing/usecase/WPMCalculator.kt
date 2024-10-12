@@ -8,8 +8,6 @@ import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
 
 
-// We probably want to fake it for unit tests
-// We also might want to have different implementations, different rules
 interface WPMCalculator {
     suspend operator fun invoke(): Flow<Int>
 }
@@ -21,8 +19,21 @@ class WPMCalculatorIml(
 
     private var typingStarted: Long? = null
 
-    // TODO: fetch only last event like:
-    // keyEventAnalyticsDao.getUpdates() : FLow<KeyEventAnalytics> instead if FLow<List<KeyEventAnalytics>>
+    /**
+     * TODO: must be unit tested
+     * TODO: collect only last updates. Now we query all db and iterate everything on each db update, basically slowest solution
+     * Idea is to subscribe to only one new changes, keyEventAnalyticsDao.getUpdates() : FLow<KeyEventAnalytics> instead if FLow<List<KeyEventAnalytics>>
+     * The code should look something like:
+     *
+     * keyEventAnalyticsDao
+     *  .getUpdates()
+     *  .onTimeout{
+     *      // updated pauses list
+     *  }
+     *  .map {
+     *      // apply last item changes and transform to WPM value
+     *  }
+     */
     override suspend fun invoke(): Flow<Int> {
         keyEventAnalyticsDao.clearAllKeyEvents()
 
@@ -65,7 +76,7 @@ class WPMCalculatorIml(
                     0.0
                 }
 
-                Log.d("LOL", "$timeInMinutes, ${events.size},  $wpm")
+                Log.d("WPM", "$timeInMinutes, ${events.size},  $wpm")
 
                 wpm.toInt()
             }.flowOn(dispatcher)
